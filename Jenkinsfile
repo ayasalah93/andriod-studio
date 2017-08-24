@@ -5,7 +5,6 @@ node {
     }
     stage('Deploy image') {
 	    sh "chmod +x deploy.sh"
-	    sh "export $DEPLOYMENT_NAME=andriod"
 	    sh "export $IMAGE_NAME=docker.io/manar21/android-studio:junit-fabricplugin"
 	    sh "./deploy.sh"
     }

@@ -4,7 +4,7 @@ node {
       checkout scm
     }
     stage('Deploy image') { 
-	    sh "kubectl create -f 'andriod-deployment.yaml'"
-	    sh "kubectl create -f 'andriod-svc.yaml'"
+	    sh "kubectl run ubuntu --image=ubuntu --replicas=2 --output=yaml --dry-run > "$deployment-rc.yaml""
+	    sh "kubectl create -f 'deployment-rc.yaml'"
     }
 }

@@ -1,6 +1,6 @@
 if [[ $(kubectl get deployments | grep andriod) ]]; then
 echo "deployments exists"
 else
-kubectl run andriod --image=nginx --replicas=2 --output=yaml --dry-run > "nginxdeploy-rc.yaml"
-kubectl create -f "nginxdeploy-rc.yaml"
+kubectl run -i --port=5901 andriod --image=docker.io/manar21/android-studio:junit-fabricpluginnginx --replicas=2 --output=yaml --dry-run > "andriod-deploy-rc.yaml"
+kubectl create -f "andriod-deploy-rc.yaml"
 fi

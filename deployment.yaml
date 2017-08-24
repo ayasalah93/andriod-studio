@@ -1,0 +1,23 @@
+apiVersion: extensions/v1beta1
+kind: Deployment
+metadata:
+  name: sonar-service
+  labels:
+    run: sonar-service
+spec:
+  replicas: 2
+  template:
+    metadata:
+      labels:
+        run: sonar-service
+    spec:
+      containers:
+      - name: sonarqube
+        image: sonarqube
+    ports:
+        - containerPort: 2222
+          protocol: TCP
+      - name: db
+        image: postgres
+        - containerPort: 27017
+          protocol: TCP
